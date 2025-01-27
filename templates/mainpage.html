@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Polls</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+        async function submitVote(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            // Get the selected vote value
+            const formData = new FormData(document.getElementById("poll-form"));
+            const vote = formData.get("vote");
+
+            // Send the vote to the server
+            const response = await fetch('/vote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `vote=${vote}`,
+            });
+
+            // Get the updated results
+            const results = await response.json();
+
+            // Update the results on the page
+            document.getElementById("yes-count").innerText = results.yes;
+            document.getElementById("no-count").innerText = results.no;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="poll-question">
+            What would you like to do {{ query }}?
+        </h1>
+        <form id="poll-form" class="poll-form" onsubmit="submitVote(event)">
+            <label>
+                <input type="radio" name="vote" value="yes" required> Yes
+            </label>
+            <label>
+                <input type="radio" name="vote" value="no" required> No
+            </label>
+            <button type="submit" class="vote-button">
+                Vote
+            </button>
+        </form>
+        <div id="results" class="results">
+            <h2 class="results-title">
+                Results
+            </h2>
+            <div class="results-count">
+                <p>Yes:
+                    <span id="yes-count" class="count">0</span>
+                </p>
+                <p>No:
+                    <span id="no-count" class="count">0</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

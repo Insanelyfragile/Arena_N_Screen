@@ -1,0 +1,111 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Poll Question */
+.poll-question {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Styling */
+.poll-form label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.poll-form label:hover {
+    transform: scale(1.05);
+}
+
+/* Button Styling */
+.vote-button {
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.vote-button:hover {
+    background-color: #0078d4;
+    transform: scale(1.1);
+}
+
+/* Results Section */
+.results {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+.results-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.results-count {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.count {
+    font-weight: bold;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
