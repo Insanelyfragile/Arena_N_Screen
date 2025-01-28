@@ -42,7 +42,7 @@ def update_votes():
 @app.route('/register', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
-        hashed_password = generate_password_hash(request.form.get("password"), method="sha256")
+        hashed_password = generate_password_hash(request.form.get("password"), method="pbkdf2:sha256", salt_length=8)
         user = Users(username=request.form.get("username"), password=hashed_password)
 
         db.session.add(user)
@@ -58,7 +58,7 @@ def login():
 
         if user and check_password_hash(user.password, request.form.get("password")):
             login_user(user)
-            return redirect(url_for("poll"))
+            return redirect(url_for("home"))
     return render_template("login.html")
 
 if __name__ == '__main__':
