@@ -1,2 +1,2 @@
 # Arena_N_Screen
-This website helps your friends in deciding a fun activity.
+This website helps you and yours friends in deciding a fun activity.
